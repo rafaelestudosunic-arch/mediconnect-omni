@@ -2,84 +2,104 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Medical Omnichannel System Design System */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-
+    /* Healthcare Primary Colors */
+    --background: 210 20% 98%;
+    --foreground: 215 25% 15%;
+    
+    /* Medical Theme Colors */
+    --medical-primary: 200 95% 45%;
+    --medical-primary-light: 200 85% 55%;
+    --medical-primary-dark: 200 100% 35%;
+    --medical-success: 142 76% 36%;
+    --medical-warning: 45 93% 58%;
+    --medical-critical: 0 84% 60%;
+    
+    /* Soft Healthcare Gradients */
+    --gradient-medical: linear-gradient(135deg, hsl(200 95% 45%), hsl(200 85% 55%));
+    --gradient-subtle: linear-gradient(180deg, hsl(210 20% 98%), hsl(210 30% 96%));
+    --gradient-success: linear-gradient(135deg, hsl(142 76% 36%), hsl(142 70% 45%));
+    
+    /* Card and Surface Colors */
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-
+    --card-foreground: 215 25% 15%;
+    --card-border: 210 15% 90%;
+    
+    /* Interactive Elements */
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
-    --radius: 0.5rem;
+    --popover-foreground: 215 25% 15%;
+    
+    --primary: 200 95% 45%;
+    --primary-foreground: 0 0% 100%;
+    
+    --secondary: 210 15% 95%;
+    --secondary-foreground: 215 25% 25%;
+    
+    --muted: 210 15% 96%;
+    --muted-foreground: 215 15% 50%;
+    
+    --accent: 200 85% 94%;
+    --accent-foreground: 200 95% 35%;
+    
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    
+    --border: 210 15% 90%;
+    --input: 210 15% 92%;
+    --ring: 200 95% 45%;
+    
+    --radius: 0.75rem;
+    
+    /* Healthcare Shadows */
+    --shadow-medical: 0 4px 20px -2px hsl(200 95% 45% / 0.15);
+    --shadow-soft: 0 2px 12px -3px hsl(215 25% 15% / 0.1);
+    --shadow-card: 0 1px 6px -1px hsl(215 25% 15% / 0.08);
+    
+    /* Status Colors */
+    --status-online: 142 76% 36%;
+    --status-busy: 0 84% 60%;
+    --status-away: 45 93% 58%;
+    --status-offline: 215 15% 50%;
+    
+    /* Transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-fast: all 0.15s ease-out;
 
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
+    /* Healthcare Dark Mode - keeping light for medical context */
+    --background: 215 25% 10%;
+    --foreground: 210 20% 95%;
+    --card: 215 25% 12%;
+    --card-foreground: 210 20% 95%;
+    --medical-primary: 200 85% 60%;
+    --medical-primary-light: 200 75% 70%;
+    --medical-primary-dark: 200 90% 50%;
+    
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
-
     --primary: 210 40% 98%;
     --primary-foreground: 222.2 47.4% 11.2%;
-
     --secondary: 217.2 32.6% 17.5%;
     --secondary-foreground: 210 40% 98%;
-
     --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%;
-
     --accent: 217.2 32.6% 17.5%;
     --accent-foreground: 210 40% 98%;
-
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
-
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 212.7 26.8% 83.9%;
@@ -101,5 +121,46 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  
+  /* Medical UI Utilities */
+  .medical-gradient {
+    background: var(--gradient-medical);
+  }
+  
+  .status-indicator {
+    @apply w-3 h-3 rounded-full;
+  }
+  
+  .status-online {
+    background-color: hsl(var(--status-online));
+  }
+  
+  .status-busy {
+    background-color: hsl(var(--status-busy));
+  }
+  
+  .status-away {
+    background-color: hsl(var(--status-away));
+  }
+  
+  .status-offline {
+    background-color: hsl(var(--status-offline));
+  }
+  
+  .medical-card {
+    @apply bg-card border border-border rounded-lg p-6;
+    box-shadow: var(--shadow-card);
+  }
+  
+  .metric-card {
+    @apply medical-card hover:shadow-lg;
+    transition: var(--transition-smooth);
+  }
+  
+  .channel-badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+    transition: var(--transition-fast);
   }
 }
